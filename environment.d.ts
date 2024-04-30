@@ -1,3 +1,5 @@
+import type { StrictAuthProp } from "@clerk/clerk-sdk-node";
+
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
@@ -5,8 +7,8 @@ declare global {
       CLERK_SECRET_KEY: string;
     }
   }
-}
 
-// If this file has no import/export statements (i.e. is a script)
-// convert it into a module by adding an empty export statement.
-export type {};
+  namespace Express {
+    interface Request extends StrictAuthProp {}
+  }
+}
