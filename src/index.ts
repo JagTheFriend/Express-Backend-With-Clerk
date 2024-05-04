@@ -13,14 +13,13 @@ import express, {
 import { CommentRoute } from "./routes/comment";
 import { PostRoute } from "./routes/post";
 
-const routes = [new PostRoute(), new CommentRoute()];
-
 const port = process.env.PORT || 3000;
 const app: Application = express();
 
 app.use(express.json());
 app.use(cors());
 
+const routes = [new PostRoute(), new CommentRoute()];
 for (const route of routes) {
   app.use("/", route.router);
 }
