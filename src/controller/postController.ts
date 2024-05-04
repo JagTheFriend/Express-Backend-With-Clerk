@@ -1,4 +1,3 @@
-import { faker } from "@faker-js/faker";
 import type { Request, Response } from "express";
 import prisma from "../prismaClient";
 
@@ -8,36 +7,34 @@ export class PostController {
     return res.status(200).json({ message: "get-posts", data: posts });
   }
 
-  public async createPost(_req: Request, res: Response) {
+  public async createPost(req: Request, res: Response) {
     await prisma.post.create({
       data: {
-        title: faker.hacker.phrase(),
-        body: faker.lorem.paragraphs(10),
-        authorId: faker.string.uuid(),
+        title: req.body.title,
+        body: req.body.body,
+        authorId: req.body.authorId,
       },
     });
     return res.status(200).json({ message: "create-post" });
   }
 
   public async deletePost(req: Request, res: Response) {
-    const postId = req.params.id;
     await prisma.post.delete({
       where: {
-        id: postId,
+        id: req.params.id,
       },
     });
     return res.status(200).json({ message: "delete-post" });
   }
 
   public async updatePost(req: Request, res: Response) {
-    const postId = req.params.id;
     await prisma.post.update({
       where: {
-        id: postId,
+        id: req.params.id,
       },
       data: {
-        title: faker.hacker.phrase(),
-        body: faker.lorem.paragraphs(10),
+        title: req.body.title,
+        body: req.body.body,
       },
     });
     return res.status(200).json({ message: "update-post" });
