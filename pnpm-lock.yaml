@@ -11,6 +11,9 @@ importers:
       '@clerk/clerk-sdk-node':
         specifier: ^5.0.2
         version: 5.0.2(react@18.3.1)
+      '@prisma/client':
+        specifier: ^5.13.0
+        version: 5.13.0
       cors:
         specifier: ^2.8.5
         version: 2.8.5
@@ -249,6 +252,15 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+
+  '@prisma/client@5.13.0':
+    resolution: {integrity: sha512-uYdfpPncbZ/syJyiYBwGZS8Gt1PTNoErNYMuqHDa2r30rNSFtgTA/LXsSk55R7pdRTMi5pHkeP9B14K6nHmwkg==}
+    engines: {node: '>=16.13'}
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
 
   '@types/body-parser@1.19.5':
     resolution: {integrity: sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==}
@@ -767,6 +779,8 @@ snapshots:
 
   '@esbuild/win32-x64@0.19.12':
     optional: true
+
+  '@prisma/client@5.13.0': {}
 
   '@types/body-parser@1.19.5':
     dependencies:
