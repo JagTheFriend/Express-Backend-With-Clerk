@@ -9,6 +9,7 @@ export class PostRoute implements Routes {
   }
 
   private initializeRoutes() {
+    this.router.get("/get-posts");
     this.router.post("/create-post");
     this.router.post("/delete-post/:id");
     this.router.post("/update-post/:id");
