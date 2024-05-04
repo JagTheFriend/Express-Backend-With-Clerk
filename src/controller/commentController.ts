@@ -5,7 +5,7 @@ export class CommentController {
   public async getComments(req: Request, res: Response) {
     const commentData = await prisma.comment.findMany({
       where: {
-        postId: req.body.postId,
+        postId: req.params.id,
       },
       take: 10,
       orderBy: { createdAt: "desc" },

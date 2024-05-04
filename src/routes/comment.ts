@@ -13,7 +13,7 @@ export class CommentRoute implements Routes {
   private initializeRoutes() {
     this.router.get("/get-comments/:id", this.comment.getComments);
     this.router.post("/create-comment", this.comment.createComment);
-    this.router.post("/delete-comment/:id", this.comment.deleteComment);
-    this.router.post("/update-comment/:id", this.comment.updateComment);
+    this.router.post("/delete-comment", this.comment.deleteComment);
+    this.router.post("/update-comment", this.comment.updateComment);
   }
 }
