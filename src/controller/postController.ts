@@ -54,7 +54,7 @@ export class PostController {
   public async updatePost(req: Request, res: Response) {
     await prisma.post.update({
       where: {
-        id: req.params.id,
+        id: req.body.id,
         AND: {
           authorId: req.body.authorId,
         },
@@ -62,7 +62,7 @@ export class PostController {
       data: {
         title: req.body.title,
         body: req.body.body,
-        published: req.body.published,
+        published: req.body.published === "true",
       },
     });
     return res.status(200).json({ message: "update-post" });
