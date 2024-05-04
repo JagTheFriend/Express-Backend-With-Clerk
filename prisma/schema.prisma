@@ -22,7 +22,7 @@ model Post {
   body     String
   authorId String
 
-  published Boolean   @default(false)
+  published Boolean   @default(true)
   comments  Comment[]
 }
 
