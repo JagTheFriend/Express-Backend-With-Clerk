@@ -1,17 +1,45 @@
+import type { Request, Response } from "express";
+import prisma from "../prismaClient";
+
 export class PostController {
-  public getPosts(): void {
-    console.log("getPosts");
+  public async getPosts(_req: Request, res: Response) {
+    const posts = await prisma.post.findMany({ take: 10 });
+    return res.status(200).json({ message: "get-posts", data: posts });
   }
 
-  public createPost(): void {
-    console.log("createPost");
+  public async createPost(req: Request, res: Response) {
+    await prisma.post.create({
+      data: {
+        title: req.body.title,
+        body: "",
+        authorId: "",
+      },
+    });
+    return res.status(200).json({ message: "create-post" });
   }
 
-  public deletePost(): void {
-    console.log("deletePost");
+  public async deletePost(req: Request, res: Response) {
+    const postId = req.params.id;
+    await prisma.post.delete({
+      where: {
+        id: postId,
+      },
+    });
+    return res.status(200).json({ message: "delete-post" });
   }
 
-  public updatePost(): void {
-    console.log("updatePost");
+  public async updatePost(req: Request, res: Response) {
+    const postId = req.params.id;
+    await prisma.post.update({
+      where: {
+        id: postId,
+      },
+      data: {
+        title: req.body.title,
+        body: req.body.body,
+        authorId: req.body.authorId,
+      },
+    });
+    return res.status(200).json({ message: "update-post" });
   }
 }
