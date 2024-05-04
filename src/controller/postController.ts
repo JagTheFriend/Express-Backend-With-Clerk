@@ -4,12 +4,24 @@ import prisma from "../prismaClient";
 export class PostController {
   public async getPosts(_req: Request, res: Response) {
     const posts = await prisma.post.findMany({
+      where: {
+        published: true,
+      },
       take: 10,
       orderBy: { createdAt: "desc" },
       include: {
         comments: {
           take: 10,
           orderBy: { createdAt: "desc" },
+          select: {
+            authorId: true,
+            body: true,
+            createdAt: true,
+            id: true,
+            updatedAt: true,
+            post: false,
+            postId: false,
+          },
         },
       },
     });
