@@ -1,7 +1,7 @@
 import { Router } from "express";
 import type { Routes } from "../interface";
 
-export class PostRoute implements Routes {
+export class CommentRoute implements Routes {
   public router = Router();
 
   constructor() {
@@ -9,8 +9,8 @@ export class PostRoute implements Routes {
   }
 
   private initializeRoutes() {
-    this.router.post("/create-post");
-    this.router.post("/delete-post/:id");
-    this.router.post("/update-post/:id");
+    this.router.post("/create-comment");
+    this.router.post("/delete-comment/:id");
+    this.router.post("/update-comment/:id");
   }
 }
