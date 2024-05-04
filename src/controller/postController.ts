@@ -3,7 +3,16 @@ import prisma from "../prismaClient";
 
 export class PostController {
   public async getPosts(_req: Request, res: Response) {
-    const posts = await prisma.post.findMany({ take: 10 });
+    const posts = await prisma.post.findMany({
+      take: 10,
+      orderBy: { createdAt: "desc" },
+      include: {
+        comments: {
+          take: 10,
+          orderBy: { createdAt: "desc" },
+        },
+      },
+    });
     return res.status(200).json({ message: "get-posts", data: posts });
   }
 
