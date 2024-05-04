@@ -20,6 +20,38 @@ app.get("/", (req: Request, res: Response) => {
   res.status(200).json({ message: "Hello World!" });
 });
 
+app.post("/create-post", (req: Request, res: Response) => {
+  res.status(201).json({ message: "Post created!" });
+});
+
+app.get("/get-post/:id", (req: Request, res: Response) => {
+  res.status(200).json({ message: "Post retrieved!" });
+});
+
+app.post("/update-post/:id", (req: Request, res: Response) => {
+  res.status(200).json({ message: "Post updated!" });
+});
+
+app.delete("/delete-post/:id", (req: Request, res: Response) => {
+  res.status(200).json({ message: "Post deleted!" });
+});
+
+app.get("/get-post-comments/:id", (req: Request, res: Response) => {
+  res.status(200).json({ message: "Comment retrieved!" });
+});
+
+app.post("/create-comment", (req: Request, res: Response) => {
+  res.status(200).json({ message: "Comment created!" });
+});
+
+app.post("/update-comment/:id", (req: Request, res: Response) => {
+  res.status(200).json({ message: "Comment updated!" });
+});
+
+app.delete("/delete-comment/:id", (req: Request, res: Response) => {
+  res.status(200).json({ message: "Comment deleted!" });
+});
+
 app.use(ClerkExpressRequireAuth());
 
 // Use the strict middleware that raises an error when unauthenticated
