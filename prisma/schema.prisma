@@ -14,7 +14,7 @@ datasource db {
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -27,13 +27,13 @@ model Post {
 }
 
 model Comment {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   body     String
   authorId String
 
-  post   Post @relation(fields: [postId], references: [id])
-  postId Int
+  post   Post   @relation(fields: [postId], references: [id])
+  postId String
 }
