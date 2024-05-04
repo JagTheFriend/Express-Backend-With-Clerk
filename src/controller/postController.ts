@@ -21,7 +21,10 @@ export class PostController {
   public async deletePost(req: Request, res: Response) {
     await prisma.post.delete({
       where: {
-        id: req.params.id,
+        id: req.body.id,
+        AND: {
+          authorId: req.body.authorId,
+        },
       },
     });
     return res.status(200).json({ message: "delete-post" });
@@ -31,6 +34,9 @@ export class PostController {
     await prisma.post.update({
       where: {
         id: req.params.id,
+        AND: {
+          authorId: req.body.authorId,
+        },
       },
       data: {
         title: req.body.title,
