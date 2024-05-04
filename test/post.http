@@ -1,5 +1,5 @@
 @base_url = http://localhost:4000
-@post_id = clvrzu4hb0000yj13mwf1x1s0
+@post_id = clvs0cwhv0000lsewcjs8xorv
 @author_id = anyAuthorId
 
 ### Get all posts
@@ -16,13 +16,22 @@ Content-Type: application/json
 }
 
 ### Delete a post
-POST {{base_url}}/delete-post/{{post_id}}
-
-### Update a post
-POST {{base_url}}/update-post/{{post_id}}
+POST {{base_url}}/delete-post
 Content-Type: application/json
 
 {
+  "id": "{{post_id}}",
+  "authorId": "{{author_id}}"
+}
+
+### Update a post
+POST {{base_url}}/update-post
+Content-Type: application/json
+
+{
+  "id": "{{post_id}}",
+  "authorId": "{{author_id}}",
   "title": "Updated Post",
-  "body": "This is an updated post"
+  "body": "This is an updated post",
+  "published": "true"
 }
