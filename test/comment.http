@@ -1,0 +1,15 @@
+@base_url = http://localhost:3000
+@post_id = helloworld
+
+### Create a comment
+POST {{base_url}}/comments
+Content-Type: application/json
+
+{
+    "body": "This is a comment",
+    "authorId": 1,
+    "postId": 1
+}
+
+### Get all comments
+GET {{base_url}}/get-comments/{{post_id}}
