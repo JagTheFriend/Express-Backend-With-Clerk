@@ -62,6 +62,7 @@ export class PostController {
       data: {
         title: req.body.title,
         body: req.body.body,
+        published: req.body.published,
       },
     });
     return res.status(200).json({ message: "update-post" });
