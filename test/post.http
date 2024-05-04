@@ -1,0 +1,28 @@
+@base_url = http://localhost:4000
+@post_id = clvrzu4hb0000yj13mwf1x1s0
+@author_id = anyAuthorId
+
+### Get all posts
+GET {{base_url}}/get-posts
+
+### Create a post
+POST {{base_url}}/create-post
+Content-Type: application/json
+
+{
+  "title": "New Post",
+  "body": "This is a new post",
+  "authorId": "{{author_id}}"
+}
+
+### Delete a post
+POST {{base_url}}/delete-post/{{post_id}}
+
+### Update a post
+POST {{base_url}}/update-post/{{post_id}}
+Content-Type: application/json
+
+{
+  "title": "Updated Post",
+  "body": "This is an updated post"
+}
