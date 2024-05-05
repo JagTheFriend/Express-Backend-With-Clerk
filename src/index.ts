@@ -18,6 +18,7 @@ const app: Application = express();
 
 app.use(express.json());
 app.use(cors());
+app.use(ClerkExpressRequireAuth());
 
 const routes = [new PostRoute(), new CommentRoute()];
 for (const route of routes) {
@@ -27,8 +28,6 @@ for (const route of routes) {
 app.get("/", (req: Request, res: Response) => {
   res.status(200).json({ message: "Hello World!" });
 });
-
-app.use(ClerkExpressRequireAuth());
 
 // Use the strict middleware that raises an error when unauthenticated
 app.get("/protected-route", (req: RequireAuthProp<Request>, res: Response) => {
