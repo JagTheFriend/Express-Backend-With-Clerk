@@ -1,3 +1,4 @@
+import type { RequireAuthProp } from "@clerk/clerk-sdk-node";
 import type { Request, Response } from "express";
 import prisma from "../prismaClient";
 
@@ -28,35 +29,35 @@ export class PostController {
     return res.status(200).json({ message: "get-posts", data: posts });
   }
 
-  public async createPost(req: Request, res: Response) {
+  public async createPost(req: RequireAuthProp<Request>, res: Response) {
     await prisma.post.create({
       data: {
         title: req.body.title,
         body: req.body.body,
-        authorId: req.body.authorId,
+        authorId: req.auth.userId,
       },
     });
     return res.status(200).json({ message: "create-post" });
   }
 
-  public async deletePost(req: Request, res: Response) {
+  public async deletePost(req: RequireAuthProp<Request>, res: Response) {
     await prisma.post.delete({
       where: {
         id: req.body.id,
         AND: {
-          authorId: req.body.authorId,
+          authorId: req.auth.userId,
         },
       },
     });
     return res.status(200).json({ message: "delete-post" });
   }
 
-  public async updatePost(req: Request, res: Response) {
+  public async updatePost(req: RequireAuthProp<Request>, res: Response) {
     await prisma.post.update({
       where: {
         id: req.body.id,
         AND: {
-          authorId: req.body.authorId,
+          authorId: req.auth.userId,
         },
       },
       data: {
