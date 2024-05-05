@@ -19,7 +19,7 @@ This is a simple example of how to use Clerk with Express.js, TypeScript, and Pr
 
 ## Resources
 
-- [Clerk Documentation](https://clerk.dev/docs/sdk/node)
+- [Clerk Documentation](https://clerk.com)
 - [Express.js Documentation](https://expressjs.com)
 - [Prisma Documentation](https://www.prisma.io)
 - [TypeScript Documentation](https://www.typescriptlang.org)
